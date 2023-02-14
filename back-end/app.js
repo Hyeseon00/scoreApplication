@@ -1,23 +1,23 @@
 const express = require('express');
 const { sequelize } = require('./models');
 
+// Router 정의
 const indexRouter = require('./routes');
 const usersRouter = require('./routes/users');
 const gamesRouter = require('./routes/games');
 const resultsRouter = require('./routes/results');
 
 const app = express();
+const port = 3000;
 const routes = require('./routes'); // modles/index.js가 export한 db.sequelize를 가져온다.
 
-app.set('port', 3000);
 app.use(express.json());
 app.use('/', routes);
 
 sequelize.sync({ force : false }) // 동기화 및 연결
     .then(() => {
         console.log('Database connection success !');
-    })
-    .catch((err) => {
+    }).catch((err) => {
         console.error(err);
     });
 
@@ -38,6 +38,6 @@ app.use((err, req, res, next) => {
     })
 });
 
-app.listen(app.get('port'), () =>{
-    console.log(app.get('port'), '번 포트에서 대기 중');
+app.listen(port, () =>{
+    console.log(`Example app listening on port ${port}`);
 });
