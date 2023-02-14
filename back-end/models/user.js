@@ -9,10 +9,6 @@ module.exports = class User extends Sequelize.Model {
                 allowable: false,
                 unique: true
             },
-            user_name : {
-                type: Sequelize.STRING(45),
-                allowable: false,
-            },
             user_age : {
                 type: Sequelize.INTEGER,
                 allowable: false,

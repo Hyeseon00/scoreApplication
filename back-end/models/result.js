@@ -9,6 +9,14 @@ module.exports = class Result extends Sequelize.Model {
                 allowable: false,
                 unique: true
             },
+            user_id_A : {
+                type: Sequelize.STRING(45),
+                allowable: false,
+            },
+            user_id_B : {
+                type: Sequelize.STRING(45),
+                allowable: false,
+            },
             result_score_A : {
                 type: Sequelize.INTEGER,
                 allowable: false,
@@ -22,6 +30,9 @@ module.exports = class Result extends Sequelize.Model {
                 allowable: false,
                 defaultValue: Sequelize.NOW,
             },
+            result_winner : {
+                type: Sequelize.STRING(45)
+            }
         }, { // 테이블 속성 및 모델 옵션 정의
             sequelize,
             timestamps: false,
